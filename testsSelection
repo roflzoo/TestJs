@@ -1,0 +1,31 @@
+// Выборка
+function selectionSort(arr) {
+    const n = arr.length;
+    for (let i = 0; i < n - 1; i++) {
+        let minIndex = i;
+        for (let j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        if (minIndex !== i) {
+            [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+        }
+    }
+    return arr;
+}
+
+
+function runTestsSelection() {
+    let result = selectionSort([64, 34, 25, 12, 22, 11, 90]);
+    console.assert(JSON.stringify(result) === JSON.stringify([11, 12, 22, 25, 34, 64, 90]), 'Тест 1 не пройден');
+
+    const startTime = performance.now();
+        selectionSort([64, 34, 25, 12, 22, 11, 90]);
+    const endTime = performance.now();
+    console.assert((endTime- startTime) < 0.5, 'Тест 2 не пройден');
+
+    console.log('Все тесты прошли успешно!');
+}
+
+runTestsSelection();
