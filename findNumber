@@ -1,0 +1,5 @@
+function containsDigit(str) {
+    const regex = /d/;
+    return regex.test(str);
+}
+console.log(containsDigit("Hello123"));
